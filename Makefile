@@ -6,7 +6,7 @@
 #    By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 23:02:58 by ibaaziz           #+#    #+#              #
-#    Updated: 2025/02/23 12:31:05 by ibaaziz          ###   ########.fr        #
+#    Updated: 2025/02/24 15:37:33 by ibaaziz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,10 @@ SRC = cost_b2.c\
 	lists_op.c\
 	operations.c\
 	ft_strlen.c\
+	operations_print2.c\
+	operations2.c\
+	change.c\
+	sort2.c\
 
 OBJ = $(SRC:.c=.o)
 

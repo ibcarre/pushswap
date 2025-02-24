@@ -6,13 +6,13 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:24:34 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/02/23 13:16:24 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/02/24 13:25:41 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_l	*ft_lstnew(int	value)
+t_l	*ft_lstnew(int value)
 {
 	t_l	*new;
 
@@ -67,7 +67,7 @@ void	ft_lstadd_front(t_l **list, t_l *new)
 	if (!(*list))
 	{
 		*list = new;
-		(*list) -> next = NULL;
+		(*list)-> next = NULL;
 		return ;
 	}
 	new -> next = *list;

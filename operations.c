@@ -6,7 +6,7 @@
 /*   By: ibaaziz <ibaaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 23:36:40 by ibaaziz           #+#    #+#             */
-/*   Updated: 2025/01/27 23:15:51 by ibaaziz          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:40:06 by ibaaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,57 +16,54 @@ void	ft_swap(t_l **stack)
 {
 	int	tmp;
 
-	if (!(*stack) || !((*stack) -> next))
+	if (!(*stack) || !((*stack)->next))
 		return ;
-	tmp = (*stack)-> content;
-	(*stack) -> content = ((*stack) -> next) -> content;
-	((*stack) -> next) -> content = tmp;
+	tmp = (*stack)->content;
+	(*stack)->content = ((*stack)->next)->content;
+	((*stack)->next)->content = tmp;
 }
 
-void	push(t_l **stack, t_l **stack_d)
+void	rotate_both(int idx_a, t_l **stack_a, int idx_b, t_l **stack_b)
 {
-	t_l		*tmp;
+	int	i;
 
-	tmp = (*stack_d) -> next;
-	ft_lstadd_front(stack, *stack_d);
-	*stack_d = tmp;
+	i = 0;
+	while (i < idx_a && i < idx_b)
+	{
+		rot_d(stack_a, stack_b);
+		i++;
+	}
+	while (i < idx_a)
+	{
+		rot_a(stack_a);
+		i++;
+	}
+	while (i < idx_b)
+	{
+		rot_b(stack_b);
+		i++;
+	}
 }
 
-void	ft_rot(t_l **stack)
+void	revrotate_both(int idx_a, t_l **stack_a, int idx_b, t_l **stack_b)
 {
-	t_l	*tmp;
+	int	i;
 
-	if (!((*stack) -> next))
-		return ;
-	tmp = *stack;
-	*stack = (*stack) -> next;
-	tmp -> next = NULL;
-	ft_lstadd_back(stack, tmp);
-}
-
-void	ft_rot_d(t_l **stack, t_l **stack_d)
-{
-	ft_rot(stack);
-	ft_rot(stack_d);
-}
-
-void	ft_revrot(t_l **stack)
-{
-	t_l	*tmp;
-	t_l	*lst;
-
-	if (!((*stack) -> next))
-		return ;
-	tmp = *stack;
-	while ((tmp -> next)-> next)
-		tmp = tmp -> next;
-	lst = tmp -> next;
-	tmp -> next = NULL;
-	ft_lstadd_front(stack, lst);
-}
-
-void	ft_revrot_d(t_l **stack, t_l **stack_d)
-{
-	ft_revrot(stack);
-	ft_revrot(stack_d);
+	i = 0;
+	while (i < get_cost(len_lst(*stack_a), idx_a)
+		&& i < get_cost(len_lst(*stack_b), idx_b))
+	{
+		revrot_d(stack_a, stack_b);
+		i++;
+	}
+	while (i < get_cost(len_lst(*stack_a), idx_a))
+	{
+		revrot_a(stack_a);
+		i++;
+	}
+	while (i < get_cost(len_lst(*stack_b), idx_b))
+	{
+		revrot_b(stack_b);
+		i++;
+	}
 }
